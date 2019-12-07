@@ -137,3 +137,20 @@ CLEARSCREEN MACRO
 	POP BX
 	POP AX
 ENDM
+
+
+;GET TIME
+;________________________________________________
+GETTIME MACRO
+	PUSH CX
+	PUSH DX
+	PUSH AX
+	
+	MOV AH,02
+	INT 1AH
+	MOV TIMESECONDS,DH
+	
+	POP AX
+	POP DX
+	POP CX
+ENDM
