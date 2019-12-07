@@ -21,7 +21,7 @@ ENDM
 
 ;_________________________________________
 ;SET CRUSOR
-SCURSOR MACRO  COLUMN,ROW   
+SCURSOR MACRO  ROW,COLUMN   
     PUSH BX   
     PUSH DX
     PUSH AX
@@ -116,4 +116,24 @@ SHAPEX:		MOV DL,[BX][SI]
 			CMP CL,25
 			JNE SHAPEY
 			
+ENDM
+
+
+;CLEAR SCREEN
+;________________________________________________
+CLEARSCREEN MACRO
+	PUSH AX
+	PUSH BX
+	PUSH CX
+	PUSH DX
+	MOV AL,0
+	MOV AH,06
+	MOV BX,07
+	MOV CX,00
+	MOV DX,184FH
+	INT 10H
+	POP DX
+	POP CX
+	POP BX
+	POP AX
 ENDM
